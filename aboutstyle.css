@@ -69,3 +69,7 @@ div.alignleft{
   padding: 10px;
   border: 5px solid white;
 }
+video{
+  width: 30%;
+  height: auto;
+}
