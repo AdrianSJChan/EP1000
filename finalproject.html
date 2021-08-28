@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Final Project</title>
+	<link rel="stylesheet" type="text/css" href="aboutstyle.css">
+</head>
+<body>
+	<h1>Final Project</h1>
+	<nav>
+            <ul>
+            <li><a href="index.html"> Main Page </a></li>
+            <li><a href="documentations.html">Documentations</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="aboutme.html"> About Me </a></li>
+            </ul>
+        </nav>
+	
+	<p>On this page I will sharing about my journey as I research and bulid on my final project! In my final project I have decided to bulid a clock that is able to measure the relative temperture and percentage humidity! Its name is the Environment Clock!</p>
+
+	<p>Here is a link to my <a href="AdrianChan_presentation.png"><u><b>Presentation Slide</b></u></a> and <a href="finalprojectvideo.html"><u><b>Video</b></u></a> about my project! Additionally here is a link to my <a href="ownershipcard.png"><u><b>Ownership Card</b></u></a></p>
+
+	<h2><b>Research</b></h2>
+	<p>Firstly, before persuing my project I wanted to ensure my project is feasible, with that in mind I started researching on how others build clocks online! From youtube videos to Arduino project hub, I started to research on how I can build it, what are the components needed and how can I apply what I have learnt in Digital fabrications into the the project? As seen below I started to look on arduino project hub on how others make digital clocks!</p>
+	<img src="arduinoprojecthub.png">
+
+	<h3><b>Feasibility</b></h3>
+	<p>Next up, I started sourcing out the different electronic parts needed and how is the overall cicuit going to look like. With that I started consulting my lecturer, Mr Rodney, on how my overall circuit is going to look like. Additionally I started sketches on how my clock will look like and how I can integrate the circuits into the casing. Below are pictures of my sketches and basic layouts of how circuit would look like!</p>
+	<img class="small" src="consult.jpeg">
+	<img src="sketches.jpeg">
+
+	<h3><b>Testing</b></h3>
+	<p>Following that I started to gather my components are started to test how it all works individually, learning how to code each component one by one! First up, the thermal sensor, DHT11. This sensor is able to measure the relative temperature and humidity, giving an output with the relavant data. Below is a picture of the circuit I have made using the DHT11, showing the temperature and humidity on the thru serial output.</p>
+	<img class="small" src="dht11.jpeg">
+
+	<p>Next, I tested the DS3231 RTC module showcasing the time, date and day. An interesting function of the RTC module is that it can store the time without having an external power. This is because it has a battery attached to it to keep its internal clock running! Following that I started to test out the neopixels. The neopixels are meant to display the seconds of each minute, with one LED lighting up after 10 seconds, a total of 6 LEDs are used.</p>
+	<video class="small" width="320" height="240" controls>
+  	<source src="neopixels.mp4" type="video/mp4">
+	</video>
+
+	<p>Next, the TM1637 4-digit 7-segment display. It is a digtal display, providing 4-digit displays with only 2 I/o lines. In conventional 7-segment displays are there 7 I/O lines for each digit, totaling up to 28 wires! With the TM1637, I save the usage of 26 wires, having a cleaner circuit!</p>
+	<img class="small" src="tm1637.jpeg">
+
+	<p>Lastly, I tested the touch sensors so that I can use them to activate the temperature and humidity. Below is a picture of the touch pad connected to a neopixel strip, activating the strip when there is a high input.</p>
+	<img class="small" src="touchpad.jpeg">
+
+	<h3><b>Fabrication</b></h3>
+	<p>Next up, I started to fabricate my electronic stand and the casing I am going to house the electronics. Firstly, I drafted the case and the elctronic mount on Fusion 360!</p>
+	<iframe src="https://ichat1276.autodesk360.com/shares/public/SH9285eQTcf875d3c539eb8c393d1db29391?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+	<iframe src="https://ichat1276.autodesk360.com/shares/public/SH9285eQTcf875d3c5390bf39012aca3661a?mode=embed" width="640" height="480" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"  frameborder="0"></iframe>
+
+	<p>Following that, I printed the electronic mount using the software cura, slicing the stl file and converting it into gcode. After that, I sent the gcode to the Ultimaker 2+ where my print started!</p>
+	<img src="curaelectronicmount.png">
+	<img class="small" src="electronicmount.jpeg">
+	<p>The settings in Cura are as follows:</p>
+	<li>Layer Height: 0.2mm</li>
+	<li>Wall Thickness: 0.8mm</li>
+	<li>Top, Bottom Thickness: 0.8mm</li>
+	<li>Infill Density, Infill Pattern: 10% , Grid</li>
+	<li>Print Speed: 50.0mm/s</li>
+	<li>Print Cooling Enabled</li>
+	<li>Generate Supports Enabled</li>
+	<li>Support Overhang Angle: 50 Degrees</li>
+	<li>Bulid Plate Adhesion: None</li>
+
+	<p>Next, I proceded to head over to 11C to fabricate my clock casing! I decided to use the plywood as it is the most easily accssible, with a thickness 5mm. Upon knowing the thickness I simply changed the measurements of my draft. This was extremely simple as when I was drafting my casing I used the parametric function. This means that within one step I can change the thickness and the size of my tabs will change automatically!</p>
+	<img src="clockcasing.jpeg">
+	<p>Here is the laser cutting settings I used before cutting:</p>
+	<li>Wood Thickness: 5mm</li>
+	<li>Air Assist Enabled</li>
+	<li>Cutting: Speed 30% , Power 90% , Frequency 20%</li>
+	<li>Engraving: Speed 50% , Power 50% , Frequency 50%</li>
+
+	<h3><b>Circuit Assembly</b></h3>
+	<p>After fabricating and testing all the required circuit components, I started to assemble to electronic components together, utilising arduino uno as the motherboard, being the "brain" of the circuit. First off I needed to connect all my components to a power input and a ground port. My components do not need much voltage power thus the 5v output port was sufficient! Next, I started to assign each data cable to each data port. From there I can start coding the programe to run all the components, taking inputs from sensors such as the touch sensor, RTC module and the DHT11. And sending outputs to the actuators like the TM1637 and neopixels.</p>
+	<img class="small" src="circuitassembly.jpeg">
+
+	<h3><b>Fabrication Assembly</b></h3>
+	<p>Following that I started to assemble the parts I fabricated, screwing in the electronic mount and fitting the overall casing ensuring that all my measurments are correct!</p>
+	<img src="fabricationassembly.jpeg">
+
+	<h2><b>Integration</b></h2>
+	<p>And finally the last step, integration! Here I started to put everything together, this time I switched to the arduino nano from the uno so that less spaced is used! I tweaked the Arduino IDE code to the respective ports each sensor and actuator is connected to. However I encountered a problem, I noticed that I needed multiple 5v and ground ports as the nano has only 1 port for each. To solve that problem I connected the ports to each row on the mini breadboard, now I have multiple 5v and ground ports! Below is a picture of the integration process and a video of my final product!</p>
+	<img src="integration.jpeg">
+	<video class="small" width="320" height="240" controls>
+  <source src="finalclock.mp4" type="video/mp4">
+  </video>
+
+  	<p>EP1000 has been an enjoyable module even though parts of it was online, I would like to thank my lecturer Mr Rodney and the staff at the FABLAB for their help!</p>
+
+	<div>
+		<p>Click <a href="projects.html"><b><u>here</u></b></a> to return back to projects!!</p>
+	</div>
+	<footer>
+            <p>Copyright-DigitalFabrications2021</p>
+            <a href="adriansiangjichan@gmail.com">adriansiangjichan@gmail.com</a>
+    </footer>
+</body>
+</html>
